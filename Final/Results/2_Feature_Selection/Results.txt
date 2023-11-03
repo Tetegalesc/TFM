@@ -1,0 +1,27 @@
+=============================================================================
+                            FEATURE SELECTION
+=============================================================================
+Number of features selected: 28
+Features selected: 
+Index(['low', 'adjclose', 'EMA25', 'EMA30', 'DEMA20', 'DEMA25', 'DEMA30',
+       'KAMA10', 'KAMA15', 'KAMA20', 'KAMA25', 'KAMA30', 'BBANDS_upper',
+       'BBANDS_lower', 'SAR', 'ADX5', 'ADX10', 'ADX15', 'ADX20', 'ADX30',
+       'ROC15', 'ROC20', 'ROC30', 'RSI10', 'RSI15', 'RSI20', 'RSI25', 'RSI30'],
+      dtype='object')
+Score: 0.22330279165791436
+Execution time: 2528.2527356147766
+Confussion Matrix:
+[[ 1738  6352  1493]
+ [ 6513 80446  7038]
+ [ 1836  6722  2147]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.17      0.18      0.18      9583
+           1       0.86      0.86      0.86     93997
+           2       0.20      0.20      0.20     10705
+
+    accuracy                           0.74    114285
+   macro avg       0.41      0.41      0.41    114285
+weighted avg       0.74      0.74      0.74    114285
+

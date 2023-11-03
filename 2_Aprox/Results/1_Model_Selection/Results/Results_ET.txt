@@ -1,0 +1,19 @@
+MODEL: ET
+Params: {'bootstrap': True, 'class_weight': 'balanced_subsample', 'criterion': 'entropy', 'max_depth': 78, 'max_features': 'log2', 'min_samples_split': 6, 'n_estimators': 428, 'n_jobs': -1, 'random_state': 33}
+   SCORE: 0.3558087759678522
+   CONFUSSION MATRIX: 
+[[ 73 108  56]
+ [297 597 233]
+ [ 99 169  82]]
+   CLASSIFICATION REPORT: 
+              precision    recall  f1-score   support
+
+           0       0.16      0.31      0.21       237
+           1       0.68      0.53      0.60      1127
+           2       0.22      0.23      0.23       350
+
+    accuracy                           0.44      1714
+   macro avg       0.35      0.36      0.34      1714
+weighted avg       0.52      0.44      0.47      1714
+
+

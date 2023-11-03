@@ -1,0 +1,82 @@
+APROXIMACION 3
+
+DATOS:
+
+- AAPL
+- Preprocesado
+    - TA: COMPLETO
+        - Time period -> np.arange(5,35,5)
+        - SMA, EMA, DEMA, TEMA, KAMA, MAMA, MAVP, TRIMA, WMA
+        - BBANDS, HT TRENDLINE, MIDPOINT, MIDPRICE, SAR, ADX
+        - MACD, ROC, STOCH, RSI
+    - Realtivización
+        - Volumen -> multiplica por precio medio de ['open', 'high', 'low', 'close'] -> SMA30 volumen
+        - Datos Precio -> SMA30 cierre del dia anterior
+- Valores nulos -> Eliminados
+- Etiquetas muy desbalanceadas -> 1 (subida) muy superior (60% aprox), 0 y 2 (bajada/subida) más parecidas -> Igual que Aprox 1
+    
+SELECCION DEL MODELO:
+
+- Train/Test Split -> Igual que en Aprox 1
+    - Entrenamiento hasta 2015 aprox
+    - Test desde el 2015
+
+- Evaluación
+    - Métrica -> Custom -> Media de f1 [0] y f1 [2]
+    - CV -> Temporal Series -> 12 Splits -> Slicing window (Entrenamiento 5 años, test 2 años)
+
+- Selección del Modelo:
+
+    - LR -> Predicciones casi constantes en etiqueta 1 (neutro)
+    - ET -> ELEGIDO -> Score=0.2618401057772464 -> f1[0,2] -> [0.24, 0.17]
+    - RF -> Score=0.20570855593423676 -> f1[0,2] -> [0.14, 0.28]
+    - XGB -> Score=0.19130136701420722 -> f1[0,2] -> [0.19, 0.24]
+
+FEATURE SELECTION:
+
+- Total Features -> 92
+- Selected Features -> 19 -> ['high', 'SMA10', 'SMA25', 'EMA20', 'DEMA5', 'TEMA10', 'KAMA5', 'KAMA10', 'KAMA30', 'MAMA', 'TRIMA5', 'TRIMA10', 'TRIMA25', 'TRIMA30', 'WMA25', 'ADX5', 'ADX20', 'ADX25', 'ADX30']
+- Score -> 0.30552162146519807 -> MEJORA
+- En las clase 0 (bajada) predice más veces la clase 2 (subida) que la clase correcta (Ver matriz de confusión)
+- f1[0,2] -> [0.19, 0.24] -> MEJORA
+
+HYPERPARAMETERS TUNNING:
+
+- Score -> 0.3044123421859746 -> No mejora, muy poca diferencia, puede deberse a la aleatoriedad
+- params = {'class_weight': 'balanced_subsample',
+          'criterion': 'gini',
+          'max_depth': 2,
+          'max_features': 'log2',
+          'min_samples_split': 23,
+          'n_estimators': 368,
+          'n_jobs': -1,
+          'random_state': seed}
+
+FINAL MODEL:
+
+Confusion Matrix: 
+[[  72  141   11]
+ [ 307 1223   73]
+ [  90  203   11]]
+Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.15      0.32      0.21       224
+           1       0.78      0.76      0.77      1603
+           2       0.12      0.04      0.06       304
+
+    accuracy                           0.61      2131
+   macro avg       0.35      0.37      0.34      2131
+weighted avg       0.62      0.61      0.61      2131
+
+Accuracy: 0.6128578132332239
+Balanced accuracy: 0.37351908701885717
+Recall: 0.37351908701885717
+Precision: 0.34992661243351164
+F1: 0.3448462950704359
+Custom metric: 0.1314650262018683
+
+Conclusiones:
+
+- En la clase 0 predice más veces 2
+- Añadir más empresas

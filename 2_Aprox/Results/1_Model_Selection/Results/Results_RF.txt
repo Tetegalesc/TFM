@@ -1,0 +1,19 @@
+MODEL: RF
+Params: {'class_weight': 'balanced_subsample', 'criterion': 'log_loss', 'max_depth': 43, 'max_features': 'log2', 'min_samples_split': 5, 'n_estimators': 83, 'n_jobs': -1, 'random_state': 33}
+   SCORE: 0.3490729113020795
+   CONFUSSION MATRIX: 
+[[ 52 148  37]
+ [224 773 130]
+ [ 60 240  50]]
+   CLASSIFICATION REPORT: 
+              precision    recall  f1-score   support
+
+           0       0.15      0.22      0.18       237
+           1       0.67      0.69      0.68      1127
+           2       0.23      0.14      0.18       350
+
+    accuracy                           0.51      1714
+   macro avg       0.35      0.35      0.34      1714
+weighted avg       0.51      0.51      0.51      1714
+
+

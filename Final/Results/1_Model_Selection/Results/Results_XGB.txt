@@ -1,0 +1,19 @@
+MODEL: XGB
+Params: {'eta': 0.9532520315037121, 'gamma': 7.484958852041432, 'max_depth': 14, 'n_estimators': 172, 'seed': 33, 'tree_method': 'hist'}
+   SCORE: 0.07329679108041721
+   CONFUSSION MATRIX: 
+[[  117  9259   206]
+ [  239 93416   338]
+ [  111 10350   249]]
+   CLASSIFICATION REPORT: 
+              precision    recall  f1-score   support
+
+           0       0.25      0.01      0.02      9582
+           1       0.83      0.99      0.90     93993
+           2       0.31      0.02      0.04     10710
+
+    accuracy                           0.82    114285
+   macro avg       0.46      0.34      0.32    114285
+weighted avg       0.73      0.82      0.75    114285
+
+

@@ -1,0 +1,44 @@
+=============================================================================
+                            FEATURE SELECTION
+=============================================================================
+Features importances: 
+ BBANDS_lower    0.008464
+SAR             0.005446
+KAMA30          0.005369
+ADX10           0.005017
+KAMA25          0.004559
+                  ...   
+WMA30           0.000167
+TEMA25          0.000166
+avg_price       0.000083
+ROC5           -0.000068
+RSI5           -0.000157
+Length: 92, dtype: float64
+Number of features selected: 50
+Features selected: 
+Index(['BBANDS_lower', 'SAR', 'KAMA30', 'ADX10', 'KAMA25', 'RSI15', 'RSI20',
+       'BBANDS_upper', 'ROC15', 'KAMA20', 'RSI25', 'KAMA15', 'RSI30', 'DEMA30',
+       'low', 'EMA30', 'ROC20', 'ADX15', 'DEMA25', 'ROC30', 'adjclose',
+       'KAMA10', 'DEMA20', 'ADX20', 'ADX5', 'ADX30', 'RSI10', 'EMA25', 'ADX25',
+       'TRIMA30', 'MIDPRICE10', 'TEMA30', 'volume', 'SMA30', 'high',
+       'MIDPOINT30', 'SMA15', 'MIDPOINT20', 'MIDPRICE25', 'SMA10', 'TRIMA10',
+       'MIDPRICE30', 'MIDPRICE20', 'TRIMA15', 'ROC25', 'MIDPOINT25', 'EMA5',
+       'WMA20', 'STOCH_Slow', 'TRIMA20'],
+      dtype='object')
+Score: 0.221630067118613
+Execution time: 2603.467627286911
+Confussion Matrix:
+[[ 1722  6388  1473]
+ [ 6868 80431  6698]
+ [ 1918  6734  2053]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.16      0.18      0.17      9583
+           1       0.86      0.86      0.86     93997
+           2       0.20      0.19      0.20     10705
+
+    accuracy                           0.74    114285
+   macro avg       0.41      0.41      0.41    114285
+weighted avg       0.74      0.74      0.74    114285
+

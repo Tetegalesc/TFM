@@ -1,0 +1,23 @@
+=============================================================================
+                            FEATURE SELECTION
+=============================================================================
+Number of features selected: 3
+Features selected: 
+['close', 'MACD_Hist', 'RSI']
+Score: 0.3581886004731999
+Execution time: 717.8834762573242
+Confussion Matrix:
+[[122  75  40]
+ [585 451  91]
+ [184 130  36]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.14      0.51      0.22       237
+           1       0.69      0.40      0.51      1127
+           2       0.22      0.10      0.14       350
+
+    accuracy                           0.36      1714
+   macro avg       0.35      0.34      0.29      1714
+weighted avg       0.52      0.36      0.39      1714
+

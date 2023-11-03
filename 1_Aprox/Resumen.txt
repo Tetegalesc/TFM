@@ -1,0 +1,83 @@
+APROXIMACION 1
+
+DATOS:
+
+- AAPL
+- Preprocesado
+    - TA:
+        - SMA y EMA (5,10,15)
+        - RSI
+        - MACD -> fast=12, slow=26, signal==9
+    - No Realtivización
+- Valores nulos -> Eliminados
+- Etiquetas muy desbalanceadas -> 1 (subida) muy superior (60% aprox), 0 y 2 (bajada/subida) más parecidas
+    
+SELECCION DEL MODELO:
+
+- Train/Test Split
+    - Entrenamiento hasta 2015 aprox
+    - Test desde el 2015 -> Subida del precio muy exponencial
+
+- Evaluación
+    - Métrica -> Balanced Accuracy
+    - CV -> Temporal Series -> 5 Splits -> No slicing window
+
+- Selección del Modelo:
+
+    - LR -> Predicciones constantes en etiqueta 1 (neutro)
+    - ET -> No realiza predicciones en etiqueta 1
+    - RF -> ELEGIDO -> Score=0.34702949346426637 -> f1[0,2] -> [0.21, 0.19]
+    - XGB -> Score=0.35071998692699935 -> f1[0,2] -> [0.20, 0.14]
+
+FEATURE SELECTION:
+
+- Total Features -> 16
+- Selected Features -> 3 -> ['close', 'MACD_Hist', 'RSI']
+- Score -> 0.3581886004731999 -> MEJORA
+- En las clase 0 (bajada) predice más veces la clase 2 (subida) que la clase correcta (Ver matriz de confusión)
+- f1[0,2] -> [0.22, 0.14]. Ha mejorado un poco el de la clase 0
+
+Hyperparameter Tunning:
+
+- Score -> 0.3657328691894216 -> MEJORA
+- params = {'class_weight': 'balanced_subsample',
+          'criterion': 'gini', 
+          'max_depth': 2, 
+          'max_features': 'log2', 
+          'min_samples_leaf': 18, 
+          'min_samples_split': 57, 
+          'min_weight_fraction_leaf': 6.4048242025957144e-06, 
+          'n_estimators': 181, 
+          'n_jobs': -1, 
+          'random_state': seed}
+
+FINAL MODEL:
+
+Confusion Matrix: 
+[[   0  224    0]
+ [   0 1610    0]
+ [   0  308    0]]
+Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       224
+           1       0.75      1.00      0.86      1610
+           2       0.00      0.00      0.00       308
+
+    accuracy                           0.75      2142
+   macro avg       0.25      0.33      0.29      2142
+weighted avg       0.56      0.75      0.65      2142
+
+Accuracy: 0.7516339869281046
+Balanced accuracy: 0.3333333333333333
+Recall: 0.3333333333333333
+Precision: 0.25054466230936817
+F1: 0.28606965174129356
+
+Conclusiones:
+
+- Realiza predicciones constantes a la etiqueta 1 -> Tendencia neutra
+
+- La metrica que se ha realizado para la optimización del modelo no es la correcta -> Queremos una que se centre más en acertar en las etiquetas de los extremos
+
+- Los cambios de los valores del precio soy muy grandes a lo largo del tiempo -> Relativización de los datos

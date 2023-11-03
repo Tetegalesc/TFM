@@ -1,0 +1,35 @@
+=============================================================================
+                            FEATURE SELECTION
+=============================================================================
+Number of features selected: 75
+Features selected: 
+Index(['BBANDS_lower', 'SAR', 'KAMA30', 'ADX10', 'KAMA25', 'RSI15', 'RSI20',
+       'BBANDS_upper', 'ROC15', 'KAMA20', 'RSI25', 'KAMA15', 'RSI30', 'DEMA30',
+       'low', 'EMA30', 'ROC20', 'ADX15', 'DEMA25', 'ROC30', 'adjclose',
+       'KAMA10', 'DEMA20', 'ADX20', 'ADX5', 'ADX30', 'RSI10', 'EMA25', 'ADX25',
+       'TRIMA30', 'MIDPRICE10', 'TEMA30', 'volume', 'SMA30', 'high',
+       'MIDPOINT30', 'SMA15', 'MIDPOINT20', 'MIDPRICE25', 'SMA10', 'TRIMA10',
+       'MIDPRICE30', 'MIDPRICE20', 'TRIMA15', 'ROC25', 'MIDPOINT25', 'EMA5',
+       'WMA20', 'STOCH_Slow', 'TRIMA20', 'MAMA', 'EMA15', 'DEMA5', 'EMA20',
+       'TRIMA25', 'MIDPRICE15', 'MACD_Signal', 'open', 'TEMA5', 'close',
+       'FAMA', 'HT_TRENDLINE', 'ROC10', 'WMA15', 'STOCH_Fast', 'MIDPRICE5',
+       'MIDPOINT15', 'BBANDS_middle', 'DEMA10', 'KAMA5', 'MACD', 'TEMA15',
+       'DEMA15', 'TRIMA5', 'EMA10'],
+      dtype='object')
+Score: 0.22147696150483503
+Execution time: 2645.252394914627
+Confussion Matrix:
+[[ 1720  6425  1438]
+ [ 6754 80658  6585]
+ [ 1859  6805  2041]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.17      0.18      0.17      9583
+           1       0.86      0.86      0.86     93997
+           2       0.20      0.19      0.20     10705
+
+    accuracy                           0.74    114285
+   macro avg       0.41      0.41      0.41    114285
+weighted avg       0.74      0.74      0.74    114285
+

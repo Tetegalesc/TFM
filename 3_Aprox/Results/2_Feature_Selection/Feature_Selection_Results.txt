@@ -1,0 +1,23 @@
+=============================================================================
+                            FEATURE SELECTION
+=============================================================================
+Number of features selected: 19
+Features selected: 
+['high', 'SMA10', 'SMA25', 'EMA20', 'DEMA5', 'TEMA10', 'KAMA5', 'KAMA10', 'KAMA30', 'MAMA', 'TRIMA5', 'TRIMA10', 'TRIMA25', 'TRIMA30', 'WMA25', 'ADX5', 'ADX20', 'ADX25', 'ADX30']
+Score: 0.30552162146519807
+Execution time: 1667.4903526306152
+Confussion Matrix:
+[[ 72  51 113]
+ [304 391 431]
+ [142  79 122]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.14      0.31      0.19       236
+           1       0.75      0.35      0.47      1126
+           2       0.18      0.36      0.24       343
+
+    accuracy                           0.34      1705
+   macro avg       0.36      0.34      0.30      1705
+weighted avg       0.55      0.34      0.39      1705
+

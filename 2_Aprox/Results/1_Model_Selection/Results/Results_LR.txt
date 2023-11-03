@@ -1,0 +1,19 @@
+MODEL: LR
+Params: {'C': 0.24851012743772993, 'multi_class': 'ovr', 'n_jobs': -1, 'penalty': 'l2', 'random_state': 33, 'solver': 'sag'}
+   SCORE: 0.3333333333333333
+   CONFUSSION MATRIX: 
+[[   0  237    0]
+ [   0 1127    0]
+ [   0  350    0]]
+   CLASSIFICATION REPORT: 
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       237
+           1       0.66      1.00      0.79      1127
+           2       0.00      0.00      0.00       350
+
+    accuracy                           0.66      1714
+   macro avg       0.22      0.33      0.26      1714
+weighted avg       0.43      0.66      0.52      1714
+
+

@@ -1,0 +1,23 @@
+=============================================================================
+                            FEATURE SELECTION
+=============================================================================
+Number of features selected: 6
+Features selected: 
+['open', 'close', 'SMA5', 'SMA15', 'MACD', 'MACD_Hist']
+Score: 0.36425038796019205
+Execution time: 398.5803954601288
+Confussion Matrix:
+[[ 85  96  56]
+ [303 542 282]
+ [106 145  99]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.17      0.36      0.23       237
+           1       0.69      0.48      0.57      1127
+           2       0.23      0.28      0.25       350
+
+    accuracy                           0.42      1714
+   macro avg       0.36      0.37      0.35      1714
+weighted avg       0.53      0.42      0.46      1714
+

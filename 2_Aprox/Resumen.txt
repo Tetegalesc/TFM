@@ -1,0 +1,83 @@
+APROXIMACION 2
+
+DATOS:
+
+- AAPL
+- Preprocesado
+    - TA:
+        - SMA y EMA (5,10,15)
+        - RSI
+        - MACD -> fast=12, slow=26, signal==9
+    - Realtivización -> Cierre del dia anterior -> Características que expresan precio.
+- Valores nulos -> Eliminados
+- Etiquetas muy desbalanceadas -> 1 (subida) muy superior (60% aprox), 0 y 2 (bajada/subida) más parecidas -> Igual que Aprox 1
+    
+SELECCION DEL MODELO:
+
+- Train/Test Split -> Igual que en Aprox 1
+    - Entrenamiento hasta 2015 aprox
+    - Test desde el 2015 -> Subida del precio muy exponencial
+
+- Evaluación -> Igual que en Aprox 1
+    - Métrica -> Balanced Accuracy
+    - CV -> Temporal Series -> 5 Splits -> No slicing window
+
+- Selección del Modelo:
+
+    - LR -> Predicciones constantes en etiqueta 1 (neutro)
+    - ET -> ELEGIDO -> Score=0.3558087759678522 -> f1[0,2] -> [0.21, 0.23]
+    - RF -> Score=0.3490729113020795 -> f1[0,2] -> [0.18, 0.18]
+    - XGB -> Score=0.34915374186604364 -> f1[0,2] -> [0.15, 0.06]
+
+FEATURE SELECTION:
+
+- Total Features -> 16
+- Selected Features -> 6 -> ['open', 'close', 'SMA5', 'SMA15', 'MACD', 'MACD_Hist']
+- Score -> 0.36425038796019205 -> MEJORA
+- En las clase 0 (bajada) predice más veces la clase 2 (subida) que la clase correcta (Ver matriz de confusión)
+- f1[0,2] -> [0.23, 0.25] -> MEJORA
+
+HYPERPARAMETERS TUNNING:
+
+- Score -> 0.36362078408467885 -> No mejora, muy poca diferencia, puede deberse a la aleatoriedad
+- params = {'class_weight': 'balanced_subsample',
+          'criterion': 'entropy',
+          'max_depth': 13,
+          'max_features': 'sqrt',
+          'min_samples_split': 13,
+          'n_estimators': 425,
+          'n_jobs': -1,
+          'random_state': seed}
+
+FINAL MODEL:
+
+Confusion Matrix: 
+[[  17  157   50]
+ [ 121 1290  199]
+ [  42  199   67]]
+Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.09      0.08      0.08       224
+           1       0.78      0.80      0.79      1610
+           2       0.21      0.22      0.21       308
+
+    accuracy                           0.64      2142
+   macro avg       0.36      0.36      0.36      2142
+weighted avg       0.63      0.64      0.64      2142
+
+Accuracy: 0.6414565826330533
+Balanced accuracy: 0.3648891869000564
+Recall: 0.3648891869000564
+Precision: 0.3633959551319626
+F1: 0.36376176598948873
+
+Conclusiones:
+
+- En la clase 0 predice más veces 2 que 0
+
+- La metrica que se ha realizado para la optimización del modelo no es la correcta -> Queremos una que se centre más en acertar en las etiquetas de los extremos
+
+- Relativización Datos -> Cierre día anterior poco sólido (muy volatil)
+- Relativizar el volumen
+- Añadir más TA
